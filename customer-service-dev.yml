@@ -1,0 +1,34 @@
+logging:
+  level:
+    org.springframework.web: WARN
+    com.danielctrenado: DEBUG
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/danielctrenado
+    username: '{cipher}2e15b7b439951d2d2f2769caca6135451fdadd9c7cb6127f95f748787508af0a'
+    password: '{cipher}fe8155c9ade57c12e524cecbbc55c211a22a7d71f9d77da34cbbad7bf7a9c22ac616d3d03c220b230049732e0b566854'
+  jpa:
+    properties:
+      hibernate.default_schema: orderschema
+
+
+#####################################################################################
+#
+# management
+#
+#####################################################################################
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
