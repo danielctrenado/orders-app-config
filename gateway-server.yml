@@ -1,0 +1,41 @@
+server:
+  port: 8072
+
+eureka:
+    client:
+        fetchRegistry: true
+        registerWithEureka: true
+        serviceUrl:
+            defaultZone: http://localhost:8070/eureka/
+    instance:
+        preferIpAddress: true
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    gateway:
+      enabled: true
+  zipkin:
+    tracing:
+      endpoint: localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.danielctrenado: DEBUG
