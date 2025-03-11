@@ -48,15 +48,15 @@ resilience4j:
       order-customer:
         sliding-window-type: COUNT_BASED
         # Trigger Circuit Breaker if at least “failure-rate-threshold” of requests have failed.
-        failure-rate-threshold: 10
+        failure-rate-threshold: 50
         # Records at least “minimum-number-of-calls” requests in the last “sliding-window-size” seconds before calculating the failure rate.
-        minimum-number-of-calls: 1
+        minimum-number-of-calls: 5
         # After ”wait-duration-in-open-state” seconds, Circuit Breaker will automatically transition from open to half-open state.
         automatic-transition-from-open-to-half-open-enabled: true
         # If triggered, wait at least “wait-duration-in-open-state” seconds before allowing more calls.
         wait-duration-in-open-state: 20s
         # After “wait-duration-in-open-state” time has passed, allow another “permitted-number-of-calls-in-half-open-state” requests and wait for them to calculate the failure rate again.
-        permitted-number-of-calls-in-half-open-state: 2
+        permitted-number-of-calls-in-half-open-state: 3
         # Record the result of the last “sliding-window-size” seconds.
-        sliding-window-size: 2
+        sliding-window-size: 10
         register-health-indicator: true
